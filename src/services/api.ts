@@ -416,11 +416,25 @@ export const sectionsApi = {
 // MATIÈRES
 // ============================================
 export const subjectsApi = {
-  getAll: (params?: Record<string, any>) => apiService.get<any>('/teachers/subjects', { params }),
+  getAll: (params?: Record<string, any>) => {
+    // Ne pas envoyer params du tout si vide ou undefined
+    if (!params || Object.keys(params).length === 0) {
+      return apiService.get<any>('/teachers/subjects')
+    }
+    return apiService.get<any>('/teachers/subjects', { params })
+  },
   getById: (id: number) => apiService.get<any>(`/teachers/subjects/${id}`),
   create: (data: any) => apiService.post<any>('/teachers/subjects', data),
   update: (id: number, data: any) => apiService.put<any>(`/teachers/subjects/${id}`, data),
   delete: (id: number) => apiService.delete(`/teachers/subjects/${id}`),
+
+  // COEFFICIENTS
+  getCoefficients: (subjectId: number) => apiService.get<any>(`/teachers/subjects/${subjectId}/coefficients`),
+  createCoefficient: (data: { subject_id: number; class_id: number; coefficient: number }) => 
+    apiService.post<any>('/teachers/subject-coefficients', data),
+  updateCoefficient: (id: number, data: { coefficient: number }) => 
+    apiService.put<any>(`/teachers/subject-coefficients/${id}`, data),
+  deleteCoefficient: (id: number) => apiService.delete(`/teachers/subject-coefficients/${id}`),
 }
 
 // ============================================

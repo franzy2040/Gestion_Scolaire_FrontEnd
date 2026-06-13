@@ -55,6 +55,12 @@ import AcademicLevelsPage from './pages/admin/academics/AcademicLevelsPage'
 import AcademicAssignPage from './pages/admin/academics/AcademicAssignPage'
 import AcademicCouncilPage from './pages/admin/academics/AcademicCouncilPage'
 
+// ========== SOUS-MENUS Grades ou Gestion des notes ==========
+import GradesAveragePage  from './pages/admin/grades/GradesAveragePage'
+import GradesRankingPage  from './pages/admin/grades/GradesRankingPage'
+import GradesReportCardsPage  from './pages/admin/grades/GradesReportCardsPage'
+import GradesHonorRollPage  from './pages/admin/grades/GradesHonorRollPage'
+
 // Composants
 import ProtectedRoute from './components/auth/ProtectedRoute'
 
@@ -127,7 +133,15 @@ function App() {
             <Route path="/academics/levels" element={<AcademicLevelsPage />} />
             <Route path="/academics/assign" element={<AcademicAssignPage />} />
             <Route path="/academics/council" element={<AcademicCouncilPage />} />
+
+            {/* ========== SOUS-MENUS GRADES ========== */}
+            <Route path="/grades/average" element={<GradesAveragePage />} />
+            <Route path="/grades/ranking" element={<GradesRankingPage />} />
+            <Route path="/grades/bulletins" element={<GradesReportCardsPage />} />
+            <Route path="/grades/honor" element={<GradesHonorRollPage />} />    
+
           </Route>
+          
         </Route>
 
         {/* ==================== REDIRECTIONS ==================== */}

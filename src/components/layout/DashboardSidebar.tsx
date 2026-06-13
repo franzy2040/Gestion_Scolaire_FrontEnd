@@ -5,7 +5,7 @@ import {
   ChevronRight, LogOut, School, Lock, Search, UserPlus, Upload,
   UsersRound, ArrowLeftRight, History, Ban, BookMarked, Layers,
   GraduationCap as GraduationCap, UserCheck, MessageSquare,
-  BarChart3, TrendingUp, Activity, PieChart
+  BarChart3, TrendingUp, Activity, PieChart, Trophy, FileText, Crown
 } from 'lucide-react'
 import { useAuthStore } from '@/store/authStore'
 import { useLang } from '@/hooks/useLang'
@@ -56,6 +56,10 @@ const t = {
     timetable: 'Emploi du temps',
     teachers: 'Enseignants',
     grades: 'Notes & Moyennes',
+    gradesAverage: 'Moyennes',
+    gradesRanking: 'Classement',
+    gradesReportCards: 'Bulletins',
+    gradesHonorRoll: "Tableau d'honneur",
     discipline: 'Discipline',
     budget: 'Budget Scolaire',
   },
@@ -86,6 +90,10 @@ const t = {
     timetable: 'Timetable',
     teachers: 'Teachers',
     grades: 'Grades & Averages',
+    gradesAverage: 'Averages',
+    gradesRanking: 'Ranking',
+    gradesReportCards: 'Report Cards',
+    gradesHonorRoll: 'Honor Roll',
     discipline: 'Discipline',
     budget: 'School Budget',
   }
@@ -141,6 +149,10 @@ const getModuleMenus = (lang: 'fr' | 'en'): ModuleMenu[] => {
       dashboardPerm: 'grades_read',
       items: [
         { path: '/grades', label: txt.grades, icon: BookOpen, perm: 'grades_read' },
+        { path: '/grades/average', label: txt.gradesAverage, icon: TrendingUp, perm: 'grades_read' },
+        { path: '/grades/ranking', label: txt.gradesRanking, icon: Trophy, perm: 'grades_read' },
+        { path: '/grades/bulletins', label: txt.gradesReportCards, icon: FileText, perm: 'grades_read' },
+        { path: '/grades/honor', label: txt.gradesHonorRoll, icon: Crown, perm: 'grades_read' },
       ],
     },
     {
